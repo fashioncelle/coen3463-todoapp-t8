@@ -1,0 +1,76 @@
+doctype html
+//if lt IE 7 
+  html.no-js.ie6.lt8(lang='en')  
+//if IE 7 
+  html.no-js.ie7.lt8(lang='en')  
+//if IE 8 
+  html.no-js.ie8.lt8(lang='en')  
+//if IE 9 
+  html.no-js.ie9(lang='en')  
+// [if (gt IE 9)|!(IE)] <!
+html.no-js(lang='en')
+  // <![endif]
+  head
+    meta(charset='UTF-8')
+    // <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    title Login and Registration Form 
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='Login and Registration Form ')
+    meta(name='keywords', content='html5, css3, form, switch, animation, :target, pseudo-class')
+    meta(name='author', content='Codrops')
+    link(rel='shortcut icon', href='')
+    link(rel='stylesheet', type='text/css', href='stylesheets/login.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/demo.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/animate-custom.css')
+  body
+    .container
+      // Codrops top bar
+      .codrops-top
+        a(href='')
+      section
+        #container_demo
+          // hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4
+          a#toregister.hiddenanchor
+          a#tologin.hiddenanchor
+          #wrapper
+            if (alertMessage.length > 0)
+                  p.alert-message
+                      | #{alertMessage}
+            #login.animate.form
+              #thumbnail
+                   img(src='/images/login-logo.png')
+              form(action='/login', method='post', autocomplete='on')
+                p
+                  label.uname(for='username', data-icon='u')  Username 
+                  input#username(name='username', required='required', type='text', placeholder='Username')
+                p
+                  label.youpasswd(for='password', data-icon='p')  Password 
+                  input#password(name='password', required='required', type='password', placeholder='Password')
+                p.keeplogin
+                  input#loginkeeping(type='checkbox', name='loginkeeping', value='loginkeeping')
+                  label(for='loginkeeping') Keep me logged in
+                p.login.button
+                  input(type='submit', value='Login')
+                p.change_link
+                  | Not a member yet ?
+                  a.to_register(href='#toregister') Join us
+            #register.animate.form
+              form(action='/signup',method='post', autocomplete='on')
+                h1  Sign up 
+                p
+                  label.uname(for='usernamesignup', data-icon='u') Username
+                  input#usernamesignup(name='usernamesignup', required='required', type='text', placeholder='Username')
+                p
+                  label.uname(for='firtsnamesignup', data-icon='u') First Name
+                  input#firstnamesignup(name='firstnamesignup', required='required', type='text', placeholder='First Name')
+                p
+                  label.uname(for='lastnamenamesignup', data-icon='u') Last Name
+                  input#lastnamesignup(name='lastnamesignup', required='required', type='text', placeholder='Last Name')
+                p
+                  label.youpasswd(for='passwordsignup', data-icon='p') Password 
+                  input#passwordsignup(name='passwordsignup', required='required', type='password', placeholder='Password')
+                p.signin.button
+                  input(type='submit', value='Sign up')
+                p.change_link
+                  | Already a member ?
+                  a.to_register(href='#tologin')  Go and log in 

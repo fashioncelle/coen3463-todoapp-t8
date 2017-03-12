@@ -1,5 +1,7 @@
 var path = require('path');
 
+process.noDeprecation = true;
+
 module.exports = {
     entry: [
         './src/index.js'

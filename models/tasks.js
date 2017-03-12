@@ -9,7 +9,7 @@ mongoose.Promise = Promise;
 var tasksSchema = new Schema
 (
     {
-        name: {type:String, default: 'Default task name'},
+        name: {type:String, default: 'Write Your to-do Here'},
         owner: {
             type: Schema.Types.ObjectId,
             ref: 'users'

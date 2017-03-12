@@ -1,0 +1,12 @@
+.card .card-action 
+{
+	text-align: right;
+}
+.fixed-action-btn
+{
+	position: static;
+}
+.fixed-action-btn.horizontal ul 
+{
+	right: 80px;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect, PromiseState } from 'react-refetch';
+import TaskCard from './TaskCard';
 
 class Taskstodo extends Component {
 	constructor(props) {
@@ -85,38 +86,14 @@ class Taskstodo extends Component {
 	                <div className="row">
 	                	{
 	                		 userTasks.tasks.map(userTask =>
-                                <div className="col s12 m4">
-						          <div className="card blue-grey darken-1">
-						            <div className="card-content white-text">
-						              <span className="card-title">
-							              	{
-								              	userTask.name
-								            }
-						              </span>
-						              <p>
-						              		{
-						              			userTask.isComplete == false
-						              				?
-						              					"Not Completed"
-						              				:
-						              					"Completed"
-						              		}
-						              </p>
-						            </div>
-						            <div className="card-action">
-						            	<div className="fixed-action-btn horizontal">
-										    <a className="btn-floating btn-large blue">
-										      <i className="large material-icons">mode_edit</i>
-										    </a>
-										    <ul>
-										      <li><a className="btn-floating yellow darken-1"><i className="material-icons">mode_edit</i></a></li> 
-										      <li><a className="btn-floating green"><i className="material-icons">done</i></a></li>          
-										      <li><a className="btn-floating red"><i className="material-icons">delete</i></a></li> 
-										    </ul>
-										</div>
-									</div>
-						        </div>
-						        </div>
+                                <TaskCard 
+                                    key={userTask._id}
+                                    user={user}
+                                    userTask={userTask}
+                                    handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                    handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                    handleDeleteTaskSubmit={handleDeleteTaskSubmit}
+                                />
                             )
 	                	}
 				        

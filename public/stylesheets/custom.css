@@ -1,3 +1,11 @@
+.body
+{
+	background-image: url('/images/cork-board.jpg');
+}
+.nav-wrapper
+{
+	background-color: #795548;
+}
 .card .card-action 
 {
 	text-align: right;
@@ -10,3 +18,23 @@
 {
 	right: 80px;
 }
+.banner 
+{
+	position: relative;
+	color: #3e2723;
+	text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25);
+	text-align: center;
+	background-image: url('/images/h2.jpg');
+	padding: 1em 0 1em 0;
+	margin: 0;
+	background-size: 80% auto;
+}
+.foot
+{
+	position: relative;
+	color: #fff;
+	text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25);
+	text-align: center;
+	margin: 4.5em 0 0 0;
+}
+	

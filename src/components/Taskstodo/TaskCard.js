@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 
 class TaskCard extends Component {
 	 constructor(props) {
@@ -82,30 +83,51 @@ class TaskCard extends Component {
 	            {
 	                    editingTask == false
 	                        ?
-	                        <div className="card blue-grey darken-1">
-					            <div className="card-content white-text">
-					              	<span className="card-title">
-						              	{
-							              	userTask.name
-							            }
-					              	</span>
-					              	<p>
-					              		{
-					              			userTask.isComplete == false
-					              				?
-					              					"Not Completed"
-					              				:
-					              					"Completed"
-					              		}
-					              	</p>
+	                        <div className="card amber lighten-2">
+					            <div className="card-content black-text">
+					            	<p>
+					            		Created:&nbsp;
+					            		{
+				                            moment(userTask.createdAt)
+				                                .tz("Asia/Manila")
+				                                .format("MMM DD, YYYY hh:mm A")
+				                        }
+					            	</p>
+					            	{
+				              			userTask.isComplete == false
+				              				?
+				              				<div>
+					              				<span className="card-title">
+									              	{
+										              	userTask.name
+										            }
+								              	</span>
+								              	<p>
+								              		Not Completed
+								              	</p>
+							              	</div>
+							              	:
+							              	<div>
+				              				<strike>
+					              				<span className="card-title">
+									              	{
+										              	userTask.name
+										            }
+								              	</span>
+							              	</strike>	
+							              	<p>
+							              		Completed
+							              	</p>
+							              	</div>	
+				              		}
 					            </div>
 					            <div className="card-action">
 					            	<div className="fixed-action-btn horizontal">
-									    <a className="btn-floating btn-large blue">
+									    <a className="btn-floating btn-large green">
 									      <i className="large material-icons">mode_edit</i>
 									    </a>
 									    <ul>
-									      <li><a className="btn-floating yellow darken-1" onClick={handleEditTaskState}><i className="material-icons">mode_edit</i></a></li> 
+									      <li><a className="btn-floating orange lighten-1" onClick={handleEditTaskState}><i className="material-icons">mode_edit</i></a></li> 
 									      <li><a className="btn-floating green" onClick={handleEditTaskStatusSubmit}><i className="material-icons">done</i></a></li>          
 									      <li><a className="btn-floating red" onClick={handleDeleteTaskSubmit}><i className="material-icons">delete</i></a></li> 
 									    </ul>
@@ -113,7 +135,7 @@ class TaskCard extends Component {
 								</div>
 					        </div>
 	                        :
-	                        <div className="card blue-grey darken-1">
+	                        <div className="card orange darken-1">
 					            <div className="card-content white-text">
 					              	<div class="input-field col s6">
 								        <input ref="taskName" placeholder="Enter your task name here" type="text" class="validate" defaultValue={userTask.name}/>

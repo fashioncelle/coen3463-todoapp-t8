@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 
-class App extends Component {
+class Footer extends Component {
     render() {
         return (
-            <div>
+            <div className="foot">
+   				<footer>
+	                <h6>
+	                    &copy;  DoReMiFaSoLa to-do 2017. All rights reserved.
+	                </h6>
+	            </footer>
             </div>
         )
     }
 }
 
 export default App;
+
+
+
+

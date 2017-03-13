@@ -7,7 +7,11 @@ class App extends Component {
   render() {
   	const { userDataFetch } = this.props;
   	 if (userDataFetch.pending) {
-        return <h1>Loading...</h1>
+        return (
+          <div className="progress">
+          <div className="indeterminate"/>
+         </div>
+      )
     }
   	if (userDataFetch.fulfilled) {
   		const [ user ] = userDataFetch.value;

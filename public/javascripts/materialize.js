@@ -1597,7 +1597,8 @@ if (jQuery) {
   };
 
   $(document).ready(function(){
-    $('ul.tabs').tabs();
+    $('ul.tabs').tabs(); 
+	$(".dropdown-button").dropdown();
   });
 }( jQuery ));
 ;(function ($) {

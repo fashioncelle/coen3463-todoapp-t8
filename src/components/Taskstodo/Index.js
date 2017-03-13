@@ -54,8 +54,10 @@ class Taskstodo extends Component {
 
          if (allUserTasksDataFetch.pending) {
             return (
-                <h1>Loading...</h1>
-            );
+              <div className="progress">
+              <div className="indeterminate"/>
+             </div>
+          )
         }
         else if (allUserTasksDataFetch.fulfilled) {
             const [ userTasksData ] = allUserTasksDataFetch.value;
@@ -72,17 +74,18 @@ class Taskstodo extends Component {
             } = this;
 
             return(
-            	<div>
-	            	<nav>  
-			            <ul className="menu">
-			            	<li><a href="#" className="clr-5">Finished Count</a></li>
-			            	<li><a href="#" className="clr-5">UnFinished Count</a></li>
-			                <li><a className="clr-1" onClick={handleAddTask}>Add New</a></li>
-			                <li><a href="#" className="clr-2">Status</a></li>
-			                <li><a href="#" className="clr-3">Delete All</a></li>
-			                <li><a href="#" className="clr-4">Log Out</a></li>
-			            </ul>
-				    </nav>
+            	<div className="body">
+                    <nav>
+                        <div className="nav-wrapper">
+                            <a href="#!" class="brand-logo">0/10 to-do</a>
+                            <ul className="right hide-on-med-and-down" style={{textAlign:"center"}}>
+                                <li><a onClick={handleAddTask}>Add New</a></li>
+                                <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Status<i className="material-icons right">arrow_drop_down</i></a></li>
+                                <li><a>Delete All</a></li>   
+                                <li><a>Log Out</a></li>
+                            </ul>
+                        </div>
+                    </nav>
 	                <div className="row">
 	                	{
 	                		 userTasks.tasks.map(userTask =>
@@ -98,7 +101,7 @@ class Taskstodo extends Component {
 	                	}
 				        
 				    </div>
-			    </div>  
+			    </div> 
             )
         }
     }

@@ -4004,7 +4004,7 @@ nav ul a span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #795548;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -8580,3 +8580,5 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+
+

@@ -5,24 +5,20 @@ class Header extends Component {
     	const {user} = this.props;
 
         return (
-		 	<header className="zerogrid">
-		 		 <h5>Your DoReMiFaSoLa to-do </h5> 
-		    	 <h1> 
-		    		{
-		    	 		user.firstName	
-		    	 	}	
-		    	 	&nbsp;
-		    	 	{
-		    	 		user.lastName	
-		    	 	}	 		
-		    	 </h1>
-		    	 <h3> 
-		    	 	&#64;
-		    		{
-		    	 		user.username	
-		    	 	}	 		
-		    	 </h3>
-		    </header>   
+        	<div className="banner">
+			 	<header>
+			 		 <h3>Your DoReMiFaSoLa to-do </h3> 
+			    	 <h4> 
+			    		{
+			    	 		user.firstName	
+			    	 	}	
+			    	 	&nbsp;
+			    	 	{
+			    	 		user.lastName	
+			    	 	}	 		
+			    	 </h4>
+			    </header>   
+			</div>
         )
     }
 }

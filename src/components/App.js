@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-refetch';
 import Header from './Header/Index';
 import Taskstodo from './Taskstodo/Index';
-import Footer from './Footer/Index';
 
 class App extends Component {
+ 
   render() {
   	const { userDataFetch } = this.props;
   	 if (userDataFetch.pending) {
@@ -17,10 +17,9 @@ class App extends Component {
   	if (userDataFetch.fulfilled) {
   		const [ user ] = userDataFetch.value;
 	    return(
-	    	<div className="main">
+	    	<div className="main" id="main" >
 		      	<Header user={user}/>
 		      	<Taskstodo user={user} />
-            <Footer />
 	      </div>
 	    )
   	}	

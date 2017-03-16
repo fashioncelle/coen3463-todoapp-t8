@@ -45,13 +45,19 @@ body.index
 {
 	background-color: #795548;
 }
-.page
+footer.footer-bar
 {
 	background-color: #795548;
 	padding-top: 15px;
 	padding-bottom: 20px;
-	position: absolute;
+	position: relative;
 	width:100%;
+}
+footer.footer-bar-absolute
+{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 .logbtn
 {

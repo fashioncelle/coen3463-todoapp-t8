@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-refetch';
 import Header from './Header/Index';
 import Taskstodo from './Taskstodo/Index';
+import Footer from './Footer/Index';
 
 class App extends Component {
   render() {
@@ -19,7 +20,8 @@ class App extends Component {
 	    	<div className="main">
 		      	<Header user={user}/>
 		      	<Taskstodo user={user} />
-	      	</div>
+            <Footer />
+	      </div>
 	    )
   	}	
   }

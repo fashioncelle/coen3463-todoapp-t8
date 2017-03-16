@@ -7,17 +7,29 @@ class Taskstodo extends Component {
         super(props);
 
         this.state = {tasksFilter: 'allTasks'};
-        this.handleTasksFilterState = this.handleTasksFilterState.bind(this);
+        this.handleOpenTasksSubmit = this.handleOpenTasksSubmit.bind(this);
+        this.handleCompletedTasksSubmit = this.handleCompletedTasksSubmit.bind(this);
+        this.handleAllTasksSubmit = this.handleAllTasksSubmit.bind(this);
         this.handleAddTask = this.handleAddTask.bind(this);
         this.handleDeleteFinishedTasksSubmit = this.handleDeleteFinishedTasksSubmit.bind(this);
         this.handleEditTaskNameSubmit = this.handleEditTaskNameSubmit.bind(this);
         this.handleEditTaskStatusSubmit = this.handleEditTaskStatusSubmit.bind(this);
         this.handleDeleteTaskSubmit = this.handleDeleteTaskSubmit.bind(this);
     }
-    handleTasksFilterState(event) {
+    handleOpenTasksSubmit(event) {
         event.preventDefault();
 
-        this.setState({tasksFilter: event.target.value});
+        this.setState({tasksFilter: 'openTasks'});
+    }
+    handleCompletedTasksSubmit(event) {
+        event.preventDefault();
+
+        this.setState({tasksFilter: 'completedTasks'});
+    }
+    handleAllTasksSubmit(event) {
+        event.preventDefault();
+
+        this.setState({tasksFilter: 'allTasks'});
     }
     handleAddTask(event) {
         event.preventDefault();
@@ -65,7 +77,9 @@ class Taskstodo extends Component {
             const { user } = this.props;
             const { tasksFilter } = this.state;
             const {
-                handleTasksFilterState,
+                handleOpenTasksSubmit,
+                handleCompletedTasksSubmit,
+                handleAllTasksSubmit,
                 handleAddTask,
                 handleDeleteFinishedTasksSubmit,
                 handleEditTaskNameSubmit,
@@ -76,30 +90,78 @@ class Taskstodo extends Component {
             return(
             	<div className="body">
                     <nav>
-                        <div className="nav-wrapper">
-                            <a href="#!" class="brand-logo">0/10 to-do</a>
-                            <ul className="right hide-on-med-and-down" style={{textAlign:"center"}}>
-                                <li><a onClick={handleAddTask}>Add New</a></li>
-                                <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Status<i className="material-icons right">arrow_drop_down</i></a></li>
-                                <li><a>Delete All</a></li>   
-                                <li><a>Log Out</a></li>
-                            </ul>
-                        </div>
+                        <form action="/logout" method="post">
+                            <div className="nav-wrapper">
+                                <a href="#!" class="brand-logo">
+                                    {
+                                        userTasks.tasks.filter(userTask =>
+                                            userTask.isComplete == true
+                                        ).length
+                                    }
+                                    &nbsp;&#47;&nbsp;
+                                    {
+                                        userTasks.tasks.length
+                                    }
+                                    &nbsp;to-do Completed
+                                </a>
+                                <ul className="right hide-on-med-and-down" style={{textAlign:"center"}}>
+                                    <li><a onClick={handleAddTask}>Add New</a></li>
+                                    <li><a onClick={handleOpenTasksSubmit}>Open</a></li> 
+                                    <li><a onClick={handleCompletedTasksSubmit}>Completed</a></li>
+                                    <li><a onClick={handleAllTasksSubmit}>All</a></li>
+                                    <li><a onClick={handleDeleteFinishedTasksSubmit}>Delete All</a></li>   
+                                    <li>
+                                        <div className="logbtn">
+                                        <input type="submit" value="Logout" />
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>    
                     </nav>
 	                <div className="row">
-	                	{
-	                		 userTasks.tasks.map(userTask =>
-                                <TaskCard 
-                                    key={userTask._id}
-                                    user={user}
-                                    userTask={userTask}
-                                    handleEditTaskNameSubmit={handleEditTaskNameSubmit}
-                                    handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
-                                    handleDeleteTaskSubmit={handleDeleteTaskSubmit}
-                                />
-                            )
+                        {
+                            tasksFilter == 'allTasks'
+                                ?
+    	                		userTasks.tasks.map(userTask =>
+                                    <TaskCard 
+                                        key={userTask._id}
+                                        user={user}
+                                        userTask={userTask}
+                                        handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                        handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                        handleDeleteTaskSubmit={handleDeleteTaskSubmit}
+                                    />
+                                )    
+                                :
+                                tasksFilter == 'openTasks'
+                                    ?
+                                    userTasks.tasks.filter(userTask =>
+                                            userTask.isComplete == false
+                                        ).map(userTask =>
+                                            <TaskCard 
+                                                key={userTask._id}
+                                                user={user}
+                                                userTask={userTask}
+                                                handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                                handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                                handleDeleteTaskSubmit={handleDeleteTaskSubmit}
+                                            />
+                                        )
+                                    :   
+                                    userTasks.tasks.filter(userTask =>
+                                            userTask.isComplete == true
+                                        ).map(userTask =>
+                                            <TaskCard 
+                                                key={userTask._id}
+                                                user={user}
+                                                userTask={userTask}
+                                                handleEditTaskNameSubmit={handleEditTaskNameSubmit}
+                                                handleEditTaskStatusSubmit={handleEditTaskStatusSubmit}
+                                                handleDeleteTaskSubmit={handleDeleteTaskSubmit}
+                                            />
+                                        )
 	                	}
-				        
 				    </div>
 			    </div> 
             )

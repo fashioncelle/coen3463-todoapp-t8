@@ -135,8 +135,8 @@ class TaskCard extends Component {
 								</div>
 					        </div>
 	                        :
-	                        <div className="card orange darken-1">
-					            <div className="card-content white-text">
+	                        <div className="card red">
+					            <div className="card-content black-text">
 					              	<div class="input-field col s6">
 								        <input ref="taskName" placeholder="Enter your task name here" type="text" class="validate" defaultValue={userTask.name}/>
 							        </div>

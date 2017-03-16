@@ -1,6 +1,13 @@
-.body
+body.index
 {
 	background-image: url('/images/cork-board.jpg');
+	background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .nav-wrapper
 {
@@ -29,12 +36,30 @@
 	margin: 0;
 	background-size: 80% auto;
 }
-.foot
+.container
 {
-	position: relative;
-	color: #fff;
-	text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25);
-	text-align: center;
-	margin: 4.5em 0 0 0;
+	background-color: #795548;
+	font-color:#fff;
 }
-	
+.container2
+{
+	background-color: #795548;
+}
+.page
+{
+	background-color: #795548;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	position: absolute;
+	width:100%;
+}
+.logbtn
+{
+	color: #3e2723;
+	font-weight: 20px;
+	font-family: arial;
+} 
+.progress
+{
+	color: #795548;
+}

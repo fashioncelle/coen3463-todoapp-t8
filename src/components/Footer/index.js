@@ -3,19 +3,16 @@ import React, { Component } from 'react';
 class Footer extends Component {
     render() {
         return (
-            <div className="foot">
-   				<footer>
-	                <h6>
-	                    &copy;  DoReMiFaSoLa to-do 2017. All rights reserved.
-	                </h6>
-	            </footer>
-            </div>
+	      <footer className="page">
+	          <div className="container2">
+		          <div className="container" style={{textAlign:"center"}}>
+		          © 2017 DoReMiFaSoLa to-do.Alrights Reserved.
+		          <a className="grey-text text-lighten-4 right" href="https://coen3463-m1t8.herokuapp.com">Created by: Jocelle Tanqui-on & Jobelle San Juan </a>
+		          </div>
+	          </div>  
+	        </footer>
         )
     }
 }
 
-export default App;
-
-
-
-
+export default Footer;
